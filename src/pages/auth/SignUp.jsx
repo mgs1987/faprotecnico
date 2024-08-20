@@ -51,17 +51,19 @@ export default function SignUp() {
         />
         {success !== null ? (
           <>
-            <p className="text-green-600">{success}</p>
+            <p className="text-green-600 m-2">{success}</p>
             <Link to="/login">
-              <button className="border border-purple-500 bg-white text-purple-500 px-4 py-2">
+              <button className="border border-purple-500 bg-purple-500 text-white shadow-lg px-4 py-2 rounded-md">
                 Vamos al Login
               </button>
             </Link>
           </>
         ) : (
-          <p>{error}</p>
+          <>
+            <p>{error}</p>
+            <SubmitButton />
+          </>
         )}
-        <SubmitButton />
       </form>
     </div>
   );

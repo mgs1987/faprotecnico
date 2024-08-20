@@ -2,30 +2,41 @@ import { useState } from "react";
 import IngresarButton from "../../components/IngresarButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  const [credentials, setCredentials] = useState({});
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
-  const [login, setLogin] = useState({});
 
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post(
+      const { data } = await axios.post(
         "https://api-fapro-itw.fapro.dev/v1/authentication/login",
-        login
+        credentials
       );
-      if (resp.data.status === "success") {
-        console.log(resp.data.data.id);
-        const userId = resp.data.data.id;
-        navigate(`/dashboard/${userId}`);
+      const {
+        data: {
+          data: { accessToken, user },
+        },
+      } = data;
+      if (user && accessToken) {
+        console.log(typeof user);
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        navigate(`/dashboard`);
       }
     } catch (error) {
       console.error(error);
+      setError("Primero debes registrarte");
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setLogin({ ...login, [name]: value });
+    setCredentials({ ...credentials, [name]: value });
   };
 
   return (
@@ -52,6 +63,12 @@ export default function Login() {
         />
 
         <IngresarButton />
+        {error !== null ? (
+          <>
+            <p className="text-white">{error}</p>
+            <button onClick={navigate("/signup")}>Ir a registarme</button>
+          </>
+        ) : null}
       </form>
     </div>
   );

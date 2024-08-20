@@ -20,13 +20,17 @@ export const useForm = () => {
         input
       );
       console.log(resp);
-      setSuccess(resp.data.data.message || "Registro exitoso");
-      setInput("");
+      setSuccess(resp.data.data.message);
+      setInput({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        repeat_password: "",
+      });
     } catch (error) {
       console.error(error);
-      setError(
-        error.response?.data?.message || "Hubo un problema al cargar el usuario"
-      );
+      setError(error.response?.data?.message);
     }
   };
   return { handleChange, handleSubmit, error, success };
