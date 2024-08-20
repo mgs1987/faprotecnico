@@ -31,10 +31,14 @@ export default function Dashboard() {
             Log out
           </button>
         </div>
-        <h1 className="text-[30px] text-center m-3">Tu perfil de entidades</h1>
-        <section>
-          <Link to="/create">Create Entities</Link>
-          <Link to="/entities">See All Entities</Link>
+        <h1 className="text-[30px] text-center m-3 ">Tu perfil de entidades</h1>
+        <section className="flex justify-center items-center">
+          <button className="border border-purple-500 m-4 px-6 py-3 bg-purple-500 shadow-lg rounded-md">
+            <Link to="/create">Create Entities</Link>
+          </button>
+          <button className="border border-purple-500 m-4 px-6 py-3  bg-purple-500 shadow-lg rounded-md">
+            <Link to="/entities">See All Entities</Link>
+          </button>
         </section>
       </div>
     </>
