@@ -4,10 +4,11 @@ import Card from "../../components/Card";
 export default function AllEntities() {
   const [errors, setErrors] = useState(null);
   const [entities, setEntities] = useState();
+
   useEffect(() => {
     const fetchEntities = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const entity = await axios.get(
           "https://api-fapro-itw.fapro.dev/v1/api_entities/entities/",
           {
@@ -20,6 +21,7 @@ export default function AllEntities() {
         setErrors("No se pudieron obtener las entidades");
       }
     };
+
     fetchEntities();
   }, []);
   return (

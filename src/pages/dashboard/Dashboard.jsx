@@ -1,21 +1,20 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
-  const { user, logout } = useAuth();
   const [newUser, setNewUser] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userLocal = localStorage.getItem("user");
+    const userLocal = sessionStorage.getItem("user");
     if (userLocal) {
       setNewUser(JSON.parse(userLocal));
     }
   }, []);
 
   const handleLogout = () => {
-    logout(null);
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("token");
     navigate("/");
   };
 

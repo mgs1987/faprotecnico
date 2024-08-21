@@ -22,11 +22,10 @@ export default function Login() {
         },
       } = data;
       if (user && accessToken) {
-        console.log(typeof user);
-        localStorage.setItem("token", accessToken);
-        localStorage.setItem("user", JSON.stringify(user));
-
-        navigate(`/dashboard`);
+        navigate("/dashboard");
+        console.log("redirigiendo a /dashboard");
+        sessionStorage.setItem("token", accessToken);
+        sessionStorage.setItem("user", JSON.stringify(user));
       }
     } catch (error) {
       console.error(error);

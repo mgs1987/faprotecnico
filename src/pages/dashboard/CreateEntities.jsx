@@ -8,7 +8,7 @@ export default function CreateEntities() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     try {
       const resp = await axios.post(
         "https://api-fapro-itw.fapro.dev/v1/api_entities/entities/",
