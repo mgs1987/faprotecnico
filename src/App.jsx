@@ -5,6 +5,7 @@ import SignUp from "./pages/auth/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import CreateEntities from "./pages/dashboard/CreateEntities";
 import AllEntities from "./pages/dashboard/AllEntities";
+import Entity from "./pages/dashboard/Entity";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/create" element={<CreateEntities />} />
       <Route exact path="/entities" element={<AllEntities />} />
+      <Route exact path="entities/:id" element={<Entity />} />
       <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );

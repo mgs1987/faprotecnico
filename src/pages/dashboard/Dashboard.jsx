@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import AllEntities from "../dashboard/AllEntities";
 export default function Dashboard() {
   const [newUser, setNewUser] = useState();
   const navigate = useNavigate();
@@ -30,14 +30,12 @@ export default function Dashboard() {
             Log out
           </button>
         </div>
-        <h1 className="text-[30px] text-center m-3 ">Tu perfil de entidades</h1>
-        <section className="flex justify-center items-center">
-          <button className="border border-purple-500 m-4 px-6 py-3 bg-purple-500 shadow-lg rounded-md">
+        <h1 className="text-[30px] text-center m-3 ">Perfil de entidades</h1>
+        <section className="flex flex-col items-center">
+          <button className="border border-purple-600 mt-4 px-6 py-3 bg-purple-600 rounded-md shadow-lg">
             <Link to="/create">Create Entities</Link>
           </button>
-          <button className="border border-purple-500 m-4 px-6 py-3  bg-purple-500 shadow-lg rounded-md">
-            <Link to="/entities">See All Entities</Link>
-          </button>
+          <AllEntities />
         </section>
       </div>
     </>

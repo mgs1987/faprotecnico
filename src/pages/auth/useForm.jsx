@@ -19,7 +19,7 @@ export const useForm = () => {
         "https://api-fapro-itw.fapro.dev/v1/authentication/register",
         input
       );
-      console.log(resp);
+
       setSuccess(resp.data.data.message);
       setInput({
         first_name: "",

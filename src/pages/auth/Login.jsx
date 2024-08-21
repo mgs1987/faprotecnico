@@ -23,7 +23,6 @@ export default function Login() {
       } = data;
       if (user && accessToken) {
         navigate("/dashboard");
-        console.log("redirigiendo a /dashboard");
         sessionStorage.setItem("token", accessToken);
         sessionStorage.setItem("user", JSON.stringify(user));
       }

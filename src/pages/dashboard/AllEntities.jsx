@@ -26,10 +26,11 @@ export default function AllEntities() {
   }, []);
   return (
     <div className="h-screen bg-purple-300 flex justify-center items-center flex-col flex-wrap ">
-      <h1 className="text-white font-ChakraPetch text-[40px]">
-        Estan son tus Entities
-      </h1>
-      <Card entities={entities} />
+      {entities.length === 0 ? (
+        <h1 className="text-[20px]">Aun hay entidades creadas</h1>
+      ) : (
+        <Card entities={entities} />
+      )}
     </div>
   );
 }
