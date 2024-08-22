@@ -1,33 +1,7 @@
-import { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { useCreate } from "./useCreate";
 export default function CreateEntities() {
-  const [entity, setEntity] = useState({ business_name: "", credential: "" });
-  const [success, setSuccess] = useState(null);
-  const [error, setError] = useState(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = sessionStorage.getItem("token");
-    try {
-      const resp = await axios.post(
-        "https://api-fapro-itw.fapro.dev/v1/api_entities/entities/",
-        entity,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      if (resp.data) {
-        resp.data.status === "success"
-          ? setSuccess("Entity creada con exito")
-          : setError("Hubo un error al crear la entity");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEntity({ ...entity, [name]: value });
-  };
+  const { handleChange, handleSubmit, error, success } = useCreate();
   return (
     <div className="h-screen bg-purple-300 text-white font-ChakraPetch  flex flex-col justify-center items-center">
       <h1 className="text-[40px]">Crea tu entidad</h1>

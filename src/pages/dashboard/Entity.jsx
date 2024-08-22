@@ -1,18 +1,20 @@
-import { useContext, useState, useEffect } from "react";
-import { EntityContext } from "../../context/EntityContext";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDelete } from "./useDelete";
+import { usePatchEntity } from "./usePatchEntity";
 
 export default function Entity() {
-  const { selectedEntity, updateSelectedEntity } = useContext(EntityContext);
-  const [success, setSuccess] = useState(null);
-  const [error, setError] = useState(null);
-  const [entityData, setEntityData] = useState({
-    business_name: "",
-    credential: "",
-    is_enabled: "",
-  });
-  const { id } = useParams();
+  const { handleDelete } = useDelete();
+  const {
+    handleChange,
+    setEntityData,
+    entityData,
+    saveChanges,
+    selectedEntity,
+    error,
+    success,
+  } = usePatchEntity();
+
   useEffect(() => {
     if (selectedEntity) {
       setEntityData({
@@ -22,55 +24,6 @@ export default function Entity() {
       });
     }
   }, [selectedEntity]);
-
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setEntityData({ ...entityData, [name]: value });
-  };
-
-  const saveChanges = async (e) => {
-    e.preventDefault();
-    try {
-      const token = sessionStorage.getItem("token");
-      const response = await axios.patch(
-        `https://api-fapro-itw.fapro.dev/v1/api_entities/entities/${id}/`,
-        entityData,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      if (response.data) {
-        updateSelectedEntity(response.data.data);
-        setSuccess("Cambios realizados con exito");
-      }
-    } catch (error) {
-      console.error(error);
-      setError("Hubo un problema al actualizar el entity");
-    }
-  };
-
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    try {
-      const token = sessionStorage.getItem("token");
-      const resp = await axios.delete(
-        `https://api-fapro-itw.fapro.dev/v1/api_entities/entities/${id}/`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      if (resp.status === 204) {
-        updateSelectedEntity((prevEntities) => {
-          if (Array.isArray(prevEntities)) {
-            return prevEntities.filter((entity) => entity.id !== id);
-          }
-          return prevEntities;
-        });
-        setSuccess("Entidad borrada con éxito");
-      } else {
-        throw new Error("Error al borrar la entidad");
-      }
-    } catch (error) {
-      console.error(error.message);
-      setError("hubo un problema al querer borrar la entidad");
-    }
-  };
 
   return (
     <div className="h-screen bg-purple-300 font-ChakraPetch text-white ">

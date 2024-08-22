@@ -1,9 +1,10 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AllEntities from "../dashboard/AllEntities";
+import { useLogout } from "./useLogout";
 export default function Dashboard() {
+  const { handleLogout } = useLogout();
   const [newUser, setNewUser] = useState();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const userLocal = sessionStorage.getItem("user");
@@ -12,12 +13,6 @@ export default function Dashboard() {
     }
   }, []);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("user");
-    sessionStorage.removeItem("token");
-    navigate("/");
-  };
-
   return (
     <>
       <div className="h-screen bg-purple-300 text-white font-ChakraPetch">
@@ -25,7 +20,7 @@ export default function Dashboard() {
           <p className="text-center">Bienvenido/a {newUser?.first_name} </p>
           <button
             className="bg-purple-600 border border-purple-500 px-6 h-10 mx-7"
-            onClick={handleLogout}
+            onClick={() => handleLogout()}
           >
             Log out
           </button>
