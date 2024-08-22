@@ -3,11 +3,11 @@ import { useCreate } from "./useCreate";
 export default function CreateEntities() {
   const { handleChange, handleSubmit, error, success } = useCreate();
   return (
-    <div className="h-screen bg-purple-300 text-white font-ChakraPetch  flex flex-col justify-center items-center">
-      <h1 className="text-[40px]">Crea tu entidad</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 m-5">
+    <div className="min-h-screen bg-purple-300 text-white font-ChakraPetch flex flex-col justify-start items-center">
+      <h1 className="text-[30px] text-center my-8 ">Crea tu entidad</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
-          className="h-8 w-80 border border-purple-500 rounded-md text-gray-500"
+          className="h-10 w-80 border border-purple-500 rounded-md text-gray-500 p-1"
           placeholder="Business Name"
           type="text"
           onChange={handleChange}
@@ -15,7 +15,7 @@ export default function CreateEntities() {
           required
         />
         <input //aqui debe ser numero en string(cuando haga validaciones)
-          className="h-8 w-80 border border-purple-500 rounded-md text-gray-500"
+          className="h-10 w-80 border border-purple-500 rounded-md text-gray-500 p-1"
           placeholder="Credencial "
           type="text"
           onChange={handleChange}
@@ -23,7 +23,7 @@ export default function CreateEntities() {
           required
         />
         <button
-          className="text-[20px] bg-purple-500 py-2 m-5 rounded-lg shadow-lg"
+          className="text-[20px] bg-purple-500 py-2 my-8 rounded-lg shadow-lg"
           type="submit"
         >
           Crear

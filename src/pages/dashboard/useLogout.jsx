@@ -4,6 +4,7 @@ export const useLogout = () => {
   const handleLogout = () => {
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("token");
+
     navigate("/");
   };
 

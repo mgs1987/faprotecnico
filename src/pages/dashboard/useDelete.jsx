@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { usePatchEntity } from "./usePatchEntity";
 const DELETE_ENTITY = import.meta.env.VITE_ENTITY;
 import axios from "axios";
 export const useDelete = () => {
-  const { updateSelectedEntity, id, setError, setSuccess } = usePatchEntity();
+  const [deleteOK, setDeleteOK] = useState(null);
+  const { updateSelectedEntity, id, setError, success } = usePatchEntity();
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
@@ -17,7 +19,7 @@ export const useDelete = () => {
           }
           return prevEntities;
         });
-        setSuccess("Entidad borrada con éxito");
+        setDeleteOK("Entidad borrada con éxito");
       } else {
         throw new Error("Error al borrar la entidad");
       }
@@ -26,5 +28,5 @@ export const useDelete = () => {
       setError("hubo un problema al querer borrar la entidad");
     }
   };
-  return { handleDelete };
+  return { handleDelete, success, deleteOK };
 };

@@ -4,8 +4,8 @@ import SignUpButton from "../../components/SignUpButton";
 export default function Home() {
   return (
     <>
-      <div className="bg-purple-300 flex flex-col justify-center items-center text-center">
-        <h1 className="text-white font-semibold font-ChakraPetch text-[60px] py-8">
+      <div className="bg-purple-300 flex flex-col justify-center items-center text-center py-44">
+        <h1 className="text-white font-semibold font-ChakraPetch text-[60px] py-8 ">
           Bienvenidos a <br />
           FaproChallenge
         </h1>

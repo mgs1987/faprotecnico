@@ -27,8 +27,9 @@ export const usePatchEntity = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.data) {
-        updateSelectedEntity(response.data.data);
-        setSuccess("Cambios realizados con exito");
+        updateSelectedEntity(response.data.data); //se actualiza el componente editado
+        setSuccess("Actualizacion exitosa");
+        setEntityData({ business_name: "", credential: "", is_enabled: "" });
       }
     } catch (error) {
       console.error(error);

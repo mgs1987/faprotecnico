@@ -1,37 +1,53 @@
 import { useState } from "react";
 import axios from "axios";
-
-export const useForm = () => {
-  const [input, setInput] = useState({});
+const POST_REGISTER = import.meta.env.VITE_USER_REGISTER;
+export const useForm = (initialForm, validateForm) => {
+  const [input, setInput] = useState(initialForm, validateForm);
   const [success, setSuccess] = useState(null);
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { value, name } = e.target;
     setInput({ ...input, [name]: value });
-    console.log(input);
   };
 
+  const handleBlur = (e) => {
+    handleChange(e);
+    setErrors(validateForm(input));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post(
-        "https://api-fapro-itw.fapro.dev/v1/authentication/register",
-        input
-      );
-
-      setSuccess(resp.data.data.message);
-      setInput({
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        repeat_password: "",
-      });
+      const resp = await axios.post(POST_REGISTER, input);
+      const successMessage = resp.data.data.message;
+      setSuccess(successMessage);
+      if (successMessage) {
+        setInput({
+          first_name: "",
+          last_name: "",
+          email: "",
+          password: "",
+          repeat_password: "",
+        });
+        setErrors({
+          first_name: "",
+          last_name: "",
+          email: "",
+          password: "",
+          repeat_password: "",
+        });
+      }
     } catch (error) {
       console.error(error);
-      setError(error.response?.data?.message);
+      setErrors(error.response?.data?.message);
     }
   };
-  return { handleChange, handleSubmit, error, success };
+  return {
+    handleChange,
+    handleSubmit,
+    errors,
+    success,
+    handleBlur,
+    input,
+  };
 };

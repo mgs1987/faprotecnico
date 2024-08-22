@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { EntityContext } from "../context/EntityContext";
 
-export default function Card({ entities }) {
+const Card = ({ entities }) => {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
@@ -22,10 +22,8 @@ export default function Card({ entities }) {
           entities.map((e, index) => (
             <div
               key={index}
-              className={`text-white font-ChakraPetch border border-purple-500 bg-purple-600 flex flex-col items-center justify-center h-60 w-56 rounded-md ${
-                e.is_enabled === false
-                  ? "opacity-30 bg-red-600"
-                  : "bg-purple-600"
+              className={`text-white font-ChakraPetch border border-purple-500 bg-purple-600 flex flex-col items-center justify-center h-44 w-56 rounded-md ${
+                e.is_enabled === false ? "hidden" : "bg-purple-600"
               }`}
             >
               <h1 className="m-1">Nombre: {e.business_name}</h1>
@@ -51,4 +49,5 @@ export default function Card({ entities }) {
       </div>
     </div>
   );
-}
+};
+export default Card;
