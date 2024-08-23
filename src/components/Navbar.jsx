@@ -28,7 +28,6 @@ export default function Navbar() {
       </div>
       <div className="flex flex-row justify-end items-center h-20 gap-10 bg-purple-300  text-white font-ChakraPetch">
         <p className="text-center m-7">Bienvenido/a {newUser?.first_name} </p>
-
         {token ? (
           <button
             className="bg-purple-600 border border-purple-500 px-6 h-10 mx-7"
