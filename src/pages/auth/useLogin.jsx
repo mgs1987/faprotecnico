@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { EntityContext } from "../../context/EntityContext";
 const USER_LOGIN = import.meta.env.VITE_USER_LOGIN;
 const useLogin = (initialForm, validationForm) => {
   const [credentials, setCredentials] = useState(initialForm, validationForm);
   const [refuse, setRefuse] = useState(null);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const { setUser } = useContext(EntityContext);
 
   const handleBlur = (e) => {
     handleChange(e);
@@ -27,9 +29,9 @@ const useLogin = (initialForm, validationForm) => {
         },
       } = data;
       if (user && accessToken) {
-        navigate("/dashboard");
         sessionStorage.setItem("token", accessToken);
-        sessionStorage.setItem("user", JSON.stringify(user));
+        setUser(user);
+        navigate("/dashboard");
       }
     } catch (error) {
       console.error(error.message);

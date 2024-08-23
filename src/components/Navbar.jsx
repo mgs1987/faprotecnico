@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { useLogout } from "../pages/dashboard/useLogout";
 import { Link } from "react-router-dom";
+import { EntityContext } from "../context/EntityContext";
+
 export default function Navbar() {
+  const { user, setUser } = useContext(EntityContext);
   const { handleLogout } = useLogout();
-  const [newUser, setNewUser] = useState();
-  const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const userLocal = sessionStorage.getItem("user");
-    const token = sessionStorage.getItem("token");
-    setToken(token);
-    if (userLocal) {
-      setNewUser(JSON.parse(userLocal));
-    }
-  }, []);
+    const setUpUser = () => {
+      const userLocal = sessionStorage.getItem("user");
+      if (userLocal) {
+        setUser(JSON.parse(userLocal));
+        console.log(user);
+      }
+    };
+    setUpUser();
+  }, [setUser]);
 
   return (
     <>
@@ -27,14 +30,16 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="flex flex-row justify-end items-center h-20 gap-10 bg-purple-300  text-white font-ChakraPetch">
-        <p className="text-center m-7">Bienvenido/a {newUser?.first_name} </p>
-        {token ? (
-          <button
-            className="bg-purple-600 border border-purple-500 px-6 h-10 mx-7"
-            onClick={() => handleLogout()}
-          >
-            Log out
-          </button>
+        {user ? (
+          <>
+            <p className="text-center m-7">Bienvenido/a {user?.first_name} </p>
+            <button
+              className="bg-purple-600 border border-purple-500 px-6 h-10 mx-7"
+              onClick={() => handleLogout()}
+            >
+              Log out
+            </button>
+          </>
         ) : (
           ""
         )}

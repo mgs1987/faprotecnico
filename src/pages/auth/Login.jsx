@@ -1,30 +1,14 @@
 import IngresarButton from "../../components/IngresarButton";
 import { Link } from "react-router-dom";
 import useLogin from "./useLogin";
-
+import useFormLogin from "./useFormLogin";
 const initialForm = {
   email: "",
   password: "",
 };
-const validationsForm = (credentials) => {
-  let errors = {};
-  let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-  let regexPassword = /^.{8,}$/;
 
-  if (!credentials.email.trim()) {
-    errors.email = "Debes proveer un email";
-  } else if (!regexEmail.test(credentials.email.trim())) {
-    errors.email = "El email debe tener formato email";
-  }
-
-  if (!credentials.password.trim()) {
-    errors.password = "Debes escribir una contraseña";
-  } else if (!regexPassword.test(credentials.password.trim())) {
-    errors.password = "El password debe contar con 8 caracteres al menos";
-  }
-  return errors;
-};
 export const Login = () => {
+  const { validationsForm } = useFormLogin();
   const {
     handleChange,
     handleSubmitLogin,

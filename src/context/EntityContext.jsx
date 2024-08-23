@@ -4,7 +4,7 @@ export const EntityContext = createContext();
 
 export const EntityProvider = ({ children }) => {
   const [selectedEntity, setSelectedEntity] = useState(null);
-
+  const [user, setUser] = useState(null);
   const updateSelectedEntity = (updateEntity) => {
     setSelectedEntity(updateEntity);
   };
@@ -14,6 +14,8 @@ export const EntityProvider = ({ children }) => {
         selectedEntity,
         setSelectedEntity,
         updateSelectedEntity,
+        user,
+        setUser,
       }}
     >
       {children}
