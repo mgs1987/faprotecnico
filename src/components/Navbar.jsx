@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="bg-white h-14 flex justify-center w-full items-center">
+      <div className="main-component-navbar">
         <Link to="/">
           <img
             src="https://fapro.app/wp-content/uploads/2024/03/logo-header-fapro.png"
@@ -29,14 +29,11 @@ export default function Navbar() {
           />
         </Link>
       </div>
-      <div className="flex flex-row justify-end items-center h-20 gap-10 bg-purple-300  text-white font-ChakraPetch">
+      <div className="logout-container">
         {user ? (
           <>
             <p className="text-center m-7">Bienvenido/a {user?.first_name} </p>
-            <button
-              className="bg-purple-600 border border-purple-500 px-6 h-10 mx-7"
-              onClick={() => handleLogout()}
-            >
+            <button className="button-logout" onClick={() => handleLogout()}>
               Log out
             </button>
           </>

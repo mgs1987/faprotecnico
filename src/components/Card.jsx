@@ -16,8 +16,8 @@ const Card = ({ entities }) => {
   };
 
   return (
-    <div className="flex justify-center my-8">
-      <div className="grid grid-cols-3 gap-5">
+    <div className="main-component-card">
+      <div className="sub-component-card">
         {entities &&
           entities.map((e, index) => (
             <div

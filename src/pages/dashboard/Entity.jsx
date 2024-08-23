@@ -26,25 +26,17 @@ export default function Entity() {
   }, [selectedEntity]);
 
   return (
-    <div className="h-screen bg-purple-300 font-ChakraPetch text-white ">
-      <div className="flex flex-row items-center justify-center text-[30px] fomt-semibold  p-4">
-        Detalles de la Entidad
-      </div>
-      <Link
-        to="/dashboard"
-        className="font-bold text-purple-500 flex justify-end px-10"
-      >
+    <div className="main-container-entity">
+      <div className="sub-div-entity">Detalles de la Entidad</div>
+      <Link to="/dashboard" className="link-entity-container">
         Ir a Dashboard
       </Link>
-      <div className="flex flex-col justify-center items-center">
-        <form
-          onSubmit={saveChanges}
-          className="flex flex-col justify-center items-center border border-purple-500 rounded-md p-8"
-        >
+      <div className="sub-container-entity">
+        <form onSubmit={saveChanges} className="form-edit">
           <p className="my-3">Realizar cambios:</p>
           <p>Entidad:</p>
           <input
-            className="text-black m-1 p-1"
+            className="input-edit m-1"
             type="text"
             value={entityData.business_name}
             name="business_name"
@@ -52,7 +44,7 @@ export default function Entity() {
           />
           <p className="mt-5">Número de cliente:</p>
           <input
-            className="text-black  p-1"
+            className="input-edit"
             type="text"
             value={entityData.credential}
             name="credential"
@@ -61,15 +53,12 @@ export default function Entity() {
           <p className="mt-5">Entidad habilitada:</p>
           <input
             value={entityData.is_enabled ? "SI" : "NO"}
-            className="w-20 mb-4 text-black bg-purple-300 text-center"
+            className="input-habilitac"
             type="text"
             name="is_enabled"
             onChange={handleChange}
           />
-          <button
-            type="submit"
-            className="border border-purple-500 bg-purple-500 px-3 py-1 rounded-md shadow-lg m-2"
-          >
+          <button type="submit" className="button-submit-edit">
             Guardar cambios
           </button>
           {error ? (
@@ -78,25 +67,22 @@ export default function Entity() {
             success && (
               <>
                 <p className="text-green-600">{success}</p>
-                <Link
-                  className="border border-purple-600 px-3 py-2 mt-4 text-white rounded-md shadow-lg bg-purple-500"
-                  to="/dashboard"
-                >
+                <Link className="link-submit" to="/dashboard">
                   Ver todas
                 </Link>
               </>
             )
           )}
         </form>
-        <div className="border border-red-700 rounded-md p-8 m-6 flex flex-row items-center justify-center">
+        <div className="second-container-edit">
           <button
             type="button"
             onClick={handleDelete}
-            className="border border-red-700 bg-red-700 rounded-md shadow-lg m-2 px-2"
+            className="button-second-container"
           >
             Presiona aqui para inhabilitar entidad
           </button>
-          {deleteOK && <p className="text-green-500 text-[15px]">{deleteOK}</p>}
+          {deleteOK && <p className="p-delete">{deleteOK}</p>}
         </div>
       </div>
     </div>

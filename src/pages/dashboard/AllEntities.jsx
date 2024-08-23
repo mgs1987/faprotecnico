@@ -24,12 +24,9 @@ export default function AllEntities() {
   }, []);
 
   return (
-    <div className=" bg-purple-300 flex justify-center items-center flex-col ">
+    <div className="main-container-entities">
       <div className="mb-4">
-        <Link
-          to="/create"
-          className="flex bg-white font-ChakraPetch border border-purple-600 mt-4 px-6 py-3 text-purple-600 rounded-md shadow-lg"
-        >
+        <Link to="/create" className="link-create">
           Create Entities
         </Link>
       </div>

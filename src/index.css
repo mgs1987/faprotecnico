@@ -2,3 +2,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* botones */
+    .ingresar-button { @apply font-ChakraPetch text-[20px] mt-4 bg-white border border-purple-500 text-purple-500 px-12 py-2 shadow-md h-14 rounded-md }
+    .login-button { @apply font-ChakraPetch text-[18px] bg-white border border-purple-500 text-purple-500 px-12 py-2 shadow-md h-14 rounded-md}
+    .login-go-button { @apply font-ChakraPetch text-[18px] bg-white border border-purple-500 text-purple-500 px-12 py-2 shadow-md h-14 rounded-md m-3 }
+    .signup-button { @apply font-ChakraPetch text-[18px] bg-white border border-purple-500 text-purple-500 px-12 py-2 shadow-md h-14 rounded-md }
+    .submit-button { @apply my-8 font-ChakraPetch text-[20px] bg-white border border-purple-500 text-purple-500 px-12 py-2 shadow-md h-12 rounded-md}
+    /* Card */
+    .main-component-card { @apply flex justify-center my-8}
+    .sub-component-card { @apply grid grid-cols-3 gap-5}
+
+    /* Footer */
+    .main-component-footer { @apply bg-white font-ChakraPetch text-center text-[16px] h-10}
+
+    /* Navbar */
+    .main-component-navbar { @apply bg-white h-14 flex justify-center w-full items-center }
+    .logout-container { @apply flex flex-row justify-end items-center h-20 gap-10 bg-purple-300 text-white font-ChakraPetch }
+    .button-logout { @apply bg-purple-600 border border-purple-500 px-6 h-10 mx-7}
+ 
+    /*Login*/
+    .main-login-container { @apply bg-purple-300 flex h-96 items-center justify-center flex-col w-screen }
+    .titulo-login { @apply text-center text-white font-ChakraPetch text-[40px] mb-5}
+    .form-format { @apply flex flex-col items-center}
+    .login-input { @apply border border-white rounded-md p-2 m-3 w-96}
+    .p-text { @apply text-[10px] text-red-600}
+    .error-refuse { @apply text-white m-3 font-ChakraPetch text-[17px]}
+    .link-style { @apply text-purple-500 underline font-ChakraPetch text-[25px]}
+
+    /*SignUp*/
+    .main-container-signup { @apply bg-purple-300 py-6 flex items-center justify-center flex-col w-screen}
+    .register-title { @apply text-center text-white font-ChakraPetch text-[40px] mb-5}
+
+    .input-signup { @apply border border-purple-500 rounded-md p-2 m-3 w-96}
+    .text-error-style { @apply text-[10px] text-red-600}
+    .success-text { @apply text-green-700 m-2}
+
+    /*All entities*/
+    .main-container-entities { @apply bg-purple-300 flex justify-center items-center flex-col}
+    .link-create { @apply flex bg-white font-ChakraPetch border border-purple-600 mt-4 px-6 py-3 text-purple-600 rounded-md shadow-lg}
+
+    /* create entity*/
+    .main-container-create { @apply min-h-screen bg-purple-300 text-white font-ChakraPetch flex flex-col justify-start items-center}
+    .title-create { @apply text-[30px] text-center my-8}
+    .form-create { @apply flex flex-col gap-4}
+    .input-create { @apply h-10 w-80 border border-purple-500 rounded-md text-gray-500 p-1}
+    .button-create { @apply text-[20px] bg-purple-500 py-2 my-8 rounded-lg shadow-lg }
+    .link-create-entities { @apply text-[20px] bg-purple-500 py-2 px-3 rounded-lg shadow-lg m-5}
+    
+    /*Dashboard*/
+    .main-component-dashboard { @apply bg-purple-300 text-white font-ChakraPetch min-h-screen}
+    .h1-dashboard { @apply text-[30px] text-center}
+    .sect-entities { @apply flex flex-col items-center}
+
+    /*Entity*/
+    .main-container-entity { @apply h-screen bg-purple-300 font-ChakraPetch text-white }
+    .sub-div-entity { @apply flex flex-row items-center justify-center text-[30px] font-semibold p-4}
+    .link-entity-container { @apply font-bold text-purple-500 flex justify-end px-10}
+    .sub-container-entity { @apply flex flex-col justify-center items-center}
+    .form-edit { @apply flex flex-col justify-center items-center border border-purple-500 rounded-md p-8}
+    .input-edit { @apply text-gray-500 p-1}
+    .input-habilitac { @apply w-20 mb-4 text-gray-500 bg-purple-300 text-center}
+    .button-submit-edit { @apply border border-purple-500 bg-purple-500 px-3 py-1 rounded-md shadow-lg m-2 }
+    .link-submit { @apply border border-purple-600 px-3 py-2 mt-4 text-white rounded-md shadow-lg bg-purple-500}
+    .second-container-edit { @apply border border-red-700 rounded-md p-8 m-6 flex flex-row items-center justify-center}
+    .button-second-container { @apply border border-red-700 bg-red-700 rounded-md shadow-lg m-2 px-3 py-2 }
+    .p-delete { @apply text-green-500 text-[15px]}
+
+    /*Home*/
+    .container-home { @apply bg-purple-300 flex flex-col justify-center items-center text-center py-44 }
+    .title-home {@apply text-white font-semibold font-ChakraPetch text-[60px] py-8}
+    .sect-home {@apply text-white flex flex-row p-4 font-ChakraPetch}
+
+    /*Not found*/
+    .notfound-container-main {@apply h-screen bg-purple-300 flex justify-center items-center flex-col }
+    .title-notfound {@apply font-ChakraPetch text-purple-500 text-[60px] }
+    .title2-notfound { @apply font-ChakraPetch text-white text-[60px]}
+    .link-notfound-dashboard { @apply font-ChakraPetch text-purple-500 text-[40px] my-10 underline}
+
+
+}
